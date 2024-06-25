@@ -1,0 +1,117 @@
+import Swal from "sweetalert2";
+import {
+  createRecordForm,
+  recordGroup,
+  recordNetTotal,
+  recordRowTemplate,
+  recordTax,
+  recordTotal,
+} from "./selector";
+import { products } from "./state";
+import { v4 as uuidv4 } from "uuid";
+import { Container } from "postcss";
+
+export const createRecordFormHandler = (event) => {
+  event.preventDefault();
+  // console.log('U submited form');
+
+  const formData = new FormData(createRecordForm);
+  // console.log(formData.get('product_select'));
+  // console.log(formData.get('quantity'));
+
+  const currentProduct = products.find(
+    ({ id }) => id == formData.get("product_select")
+  );
+
+  recordGroup.append(createRecordRow(currentProduct, formData.get("quantity")));
+
+  createRecordForm.reset();
+
+//   const total = calculateRecordCostTotal();
+//   const tax = calculateTax(total);
+
+//   // console.log(total);
+//   recordTotal.innerText = total;
+//   recordTax.innerText = calculateTax(total);
+//   recordNetTotal.innerText = total + tax;
+};
+
+export const createRecordRow = ({ id, name, price }, quantity) => {
+  const recordRow = recordRowTemplate.content.cloneNode(true);
+  const recordProductName = recordRow.querySelector(".record-product-name");
+  const recordProductPrice = recordRow.querySelector(".record-product-price");
+  const recordQuantity = recordRow.querySelector(".record-quantity");
+  const recordCost = recordRow.querySelector(".record-cost");
+
+  const currentRecordRow = recordRow.querySelector(".record-row");
+  // console.log(currentRecordRow);
+  currentRecordRow.setAttribute("product-id", id);
+  currentRecordRow.setAttribute("row-id", uuidv4());
+
+  recordProductName.innerText = name;
+  recordProductPrice.innerText = price;
+  recordQuantity.innerText = quantity;
+  recordCost.innerText = price * quantity;
+
+  return recordRow;
+};
+
+// Calculating Products
+
+export const calculateTax = (amount, percentage = 5) =>
+  (amount / 100) * percentage;
+
+export const calculateRecordCostTotal = () => {
+  let total = 0;
+
+  recordGroup.querySelectorAll(".record-cost").forEach((el) => {
+    total += parseFloat(el.innerText);
+  });
+  return total;
+};
+
+// Record Remove products part
+
+export const removeRecord = (rowId) => {
+  Swal.fire({
+    title: "Are you sure to Delete?",
+    text: "You won't be able to revert this!",
+    icon: "question",
+    showCancelButton: true,
+    confirmButtonText: "Yes, delete it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const currentRecordRow = document.querySelector(`[row-id='${rowId}']`);
+      // console.log(currentRecordRow);
+      currentRecordRow.remove();
+    }
+  });
+};
+
+export const recordGroupHandler = (event) => {
+  if (event.target.classList.contains("record-remove")) {
+    const currentRecordRow = event.target.closest(".record-row");
+    removeRecord(currentRecordRow.getAttribute("row-id"));
+  }
+};
+
+// obseve record calculating
+
+export const recordGroupObserver = () => {
+  const observerOptions = {
+    childList: true,
+    subtree: true,
+  };
+
+  const updateTotal = () => {
+    const total = calculateRecordCostTotal();
+    const tax = calculateTax(total);
+
+    recordTotal.innerText = total;
+    recordTax.innerText = calculateTax(total);
+    recordNetTotal.innerText = total + tax;
+  };
+
+  const observer = new MutationObserver(updateTotal);
+  observer.observe(recordGroup, observerOptions);
+};

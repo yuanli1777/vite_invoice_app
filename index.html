@@ -22,21 +22,18 @@
     <section class="">
       <!-- nav section  -->
       <div class="container  mb-4">
-        <form action="">
+        <form action="" id="createRecord">
           <div class="grid grid-cols-4 gap-3 bg-blue-50 p-5 rounded-lg shadow-md">
             <div class="col-span-2">
 
 
-              <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select your
+              <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select
                 Product</label>
-              <select id="countries"
+              <select id="productSelect" name="product_select" required
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
-                <option selected>Choose a product</option>
-                <option>Orange</option>
-                <option>Mango</option>
-                <option>Banana</option>
-                <option>Papaya</option>
+                <option value="" selected>Choose a product</option>
+
               </select>
 
 
@@ -45,13 +42,14 @@
 
             <div class="col-span-1">
               <label for="large-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quality</label>
-              <input type="number" id="quality"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quantity</label>
+              <input type="number" id="quantity" name="quantity"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 "
+                required>
             </div>
 
             <div class="col-span-1">
-              <button type="button"
+              <button type="submit"
                 class="w-full h-full px-3 py-2 text-sm text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add
                 Record</button>
             </div>
@@ -84,17 +82,18 @@
                 </th>
               </tr>
             </thead>
-            <tbody>
 
+            <tbody id="recordGroup">
               <!-- default no record  -->
               <tr
-              class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center" colspan="6">
+                class="hidden last:table-row odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                <th scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center" colspan="6">
                   There is no record yet.
                 </th>
               </tr>
 
-              <tr
+              <!-- <tr
                 class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   Apple
@@ -111,70 +110,18 @@
                 <td class="px-6 py-4 text-end">
                   <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Remove</a>
                 </td>
-              </tr>
-              <tr
-                class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  Papaya
-                </th>
-                <td class="px-6 py-4 text-end">
-                  $500
-                </td>
-                <td class="px-6 py-4 text-end">
-                  3
-                </td>
-                <td class="px-6 py-4 text-end">
-                  $1500
-                </td>
-                <td class="px-6 py-4 text-end">
-                  <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Remove</a>
-                </td>
-              </tr>
-              <tr
-                class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  Orange
-                </th>
-                <td class="px-6 py-4 text-end">
-                  $500
-                </td>
-                <td class="px-6 py-4 text-end">
-                  3
-                </td>
-                <td class="px-6 py-4 text-end">
-                  $1500
-                </td>
-                <td class="px-6 py-4 text-end">
-                  <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Remove</a>
-                </td>
-              </tr>
-              <tr
-                class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  Banana
-                </th>
-                <td class="px-6 py-4 text-end">
-                  $500
-                </td>
-                <td class="px-6 py-4 text-end">
-                  3
-                </td>
-                <td class="px-6 py-4 text-end">
-                  $1500
-                </td>
-                <td class="px-6 py-4 text-end">
-                  <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Remove</a>
-                </td>
-              </tr>
+              </tr> -->
+            </tbody>
 
+            <tfoot>
               <tr
                 class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-end"
                   colspan="3">
                   Total
                 </th>
-                <td class="px-6 py-4 text-end " colspan="2">
-                  $6000
+                <td id="recordTotal" class="px-6 py-4 text-end " colspan="2">
+                  0
                 </td>
               </tr>
 
@@ -182,10 +129,10 @@
                 class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-end"
                   colspan="3">
-                  Tex
+                  Tax
                 </th>
-                <td class="px-6 py-4 text-end " colspan="2">
-                  $600
+                <td id="recordTax" class="px-6 py-4 text-end " colspan="2">
+                  0
                 </td>
               </tr>
 
@@ -196,12 +143,10 @@
                   colspan="3">
                   Net Total
                 </th>
-                <td class="px-6 py-4 text-end" colspan="2">
-                  $6600
-                </td>
+                <td id="recordNetTotal" class="px-6 py-4 text-end" colspan="2">0</td>
               </tr>
-
-            </tbody>
+            </tfoot>
+            
           </table>
         </div>
 
@@ -209,76 +154,103 @@
     </section>
 
     <!-- right side nav  -->
-     <section class="fixed right-0 w-[350px] h-screen bg-white  duration-500 translate-x-full shadow-md" id="manage_bar" >
-      <div class="p-3">
-        <div class="mb-2">
-          <h1 class="font-san text-3xl font-bold">Manage Inventory</h1>
-          <p class="text-blue-400 text-sm">Available Items</p>
+    <section class="fixed right-0 w-[400px] h-screen bg-white translate-x-full shadow-md" id="productSidebar">
+      <div class="p-3 ">
+        <div class="mb-4 flex items-center justify-between">
+          <div>
+            <h1 class="font-san text-3xl font-bold">Manage Inventory</h1>
+            <p class="text-blue-400 text-sm">Available Items</p>
+          </div>
+
+          <div>
+            <button id="closeSidebarBtn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke-width="1.5" stroke="currentColor" class="size-6 pointer-events-none">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
         </div>
 
 
-        <div class="flex flex-col gap-3 mb-5">
-          <div class="flex justify-between border py-2 px-4">
-            <h1>Apple</h1>
-            <p>500 MMK</p>
-          </div>
 
-          <div class="flex justify-between border py-2 px-4">
-            <h1>Apple</h1>
-            <p>500 MMK</p>
-          </div>
-
-          <div class="flex justify-between border py-2 px-4">
-            <h1>Apple</h1>
-            <p>500 MMK</p>
-          </div>
-
+        <!-- Product Creating part  -->
+        <div class="flex flex-col gap-3 mb-5" id="productGroup">
 
         </div>
 
         <!-- new product adding  -->
         <div class="px-2 py-3 bg-blue-50 rounded-md">
-          <div class="grid grid-cols-3 gap-3">
-            <div class="col-span-3 mb-2">
-              <label for="large-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">New Product Name</label>
-              <input type="text" id="quality"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
+          <!-- product create form  -->
+          <form action="">
+            <div class="grid grid-cols-3 grid-rows-2 gap-5 ">
+              <div class="col-span-3 mb-2">
+                <label for="large-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">New
+                  Product Name</label>
+                <input type="text" id="newProductName" name="new_product_name"
+                  class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
+              </div>
+              <div class="col-span-2">
+                <label for="large-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">New
+                  Product Price</label>
+                <input type="number" id="newProductPrice" name="new_product_price"
+                  class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
+              </div>
+              <div class="col-span-1">
+                <button type="button" id='addNewProductBtn'
+                  class="w-full mt-8 px-3 py-2 text-sm text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add
+                </button>
+              </div>
             </div>
-            <div class="col-span-2">
-              <label for="large-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">New Product Price</label>
-              <input type="text" id="quality"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
-            </div>
-            <div class="col-span-1">
-              <button type="button"
-                class="w-full h-full px-3 py-2 text-sm text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add
-              </button>
-            </div>
-          </div>
+          </form>
         </div>
 
-        <div>
-          <button class="py-2 px-3 bg-slate-300 rounded-lg mt-6" id="cancel_nav">Cancel</button>
-        </div>
-        
-        
+
       </div>
 
-     </section>
+    </section>
 
 
     <footer class="mt-auto py-3">
       <div class="container flex justify-end gap-2">
         <button type="button"
-          class="px-3 py-2 text-sm  me-2 mb-2 font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" id="inventory_manage">Manage
+          class="px-3 py-2 text-sm  me-2 mb-2 font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          id="inventory_manage_btn">Manage
           Inventory</button>
         <button type="button"
-          class="px-3 py-2 text-sm text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" id="print_out">Print
+          class="px-3 py-2 text-sm text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          id="print_out">Print
         </button>
       </div>
     </footer>
+
+    <!-- Product Card Template  -->
+    <template id="productCardTemplate">
+      <div class="product-card flex justify-between border py-2 px-4">
+        <h1 class="product-name">Apple</h1>
+        <p><span class="product-price"></span> MMK</p>
+      </div>
+    </template>
+
+    <!-- Record Product Template -->
+    <template id="recordRowTemplate">
+      <tr class="record-row odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+        <th scope="row" class="record-product-name px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          Apple
+        </th>
+        <td class="record-product-price px-6 py-4 text-end">
+          $500
+        </td>
+        <td class="record-quantity px-6 py-4 text-end">
+          3
+        </td>
+        <td class="record-cost px-6 py-4 text-end">
+          $1500
+        </td>
+        <td class="px-6 py-4 text-end">
+          <button class="record-remove font-medium text-blue-600 dark:text-blue-500 hover:underline">Remove</button>
+        </td>
+      </tr>
+    </template>
 
   </main>
 
