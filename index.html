@@ -21,7 +21,7 @@
 
     <section class="">
       <!-- nav section  -->
-      <div class="container  mb-4">
+      <div class="container  mb-4 print:hidden">
         <form action="" id="createRecord">
           <div class="grid grid-cols-4 gap-3 bg-blue-50 p-5 rounded-lg shadow-md">
             <div class="col-span-2">
@@ -77,7 +77,7 @@
                 <th scope="col" class="px-6 py-3 text-end">
                   Cost
                 </th>
-                <th scope="col" class="px-6 py-3 text-end">
+                <th scope="col" class="px-6 py-3 text-end print:hidden">
                   Action
                 </th>
               </tr>
@@ -120,9 +120,11 @@
                   colspan="3">
                   Total
                 </th>
-                <td id="recordTotal" class="px-6 py-4 text-end " colspan="2">
+                <td id="recordTotal" class="px-6 py-4 text-end " colspan="1">
                   0
                 </td>
+                <td  class="px-6 py-4 text-end" colspan="1"></td>
+
               </tr>
 
               <tr
@@ -131,9 +133,11 @@
                   colspan="3">
                   Tax
                 </th>
-                <td id="recordTax" class="px-6 py-4 text-end " colspan="2">
+                <td id="recordTax" class="px-6 py-4 text-end " colspan="1">
                   0
                 </td>
+                <td  class="px-6 py-4 text-end" colspan="1"></td>
+
               </tr>
 
 
@@ -143,7 +147,8 @@
                   colspan="3">
                   Net Total
                 </th>
-                <td id="recordNetTotal" class="px-6 py-4 text-end" colspan="2">0</td>
+                <td id="recordNetTotal" class="px-6 py-4 text-end" colspan="1">0</td>
+                <td  class="px-6 py-4 text-end" colspan="1"></td>
               </tr>
             </tfoot>
             
@@ -210,7 +215,7 @@
     </section>
 
 
-    <footer class="mt-auto py-3">
+    <footer class="mt-auto py-3 print:hidden">
       <div class="container flex justify-end gap-2">
         <button type="button"
           class="px-3 py-2 text-sm  me-2 mb-2 font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
@@ -218,7 +223,7 @@
           Inventory</button>
         <button type="button"
           class="px-3 py-2 text-sm text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-          id="print_out">Print
+          id="checkout">Checkout
         </button>
       </div>
     </footer>
@@ -240,14 +245,22 @@
         <td class="record-product-price px-6 py-4 text-end">
           $500
         </td>
-        <td class="record-quantity px-6 py-4 text-end">
-          3
+        <td class=" px-6 py-4 text-end group">
+          <button class="quantity-sub hidden group-hover:inline-block border rounded-full p-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-2 pointer-events-none">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
+          </svg>
+          </button>
+          <span class="record-quantity w-5 inline-block">0</span>
+          <button class="quantity-add hidden group-hover:inline-block border rounded-full p-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-2 pointer-events-none">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+          </svg>
+          </button>
         </td>
         <td class="record-cost px-6 py-4 text-end">
           $1500
         </td>
         <td class="px-6 py-4 text-end">
-          <button class="record-remove font-medium text-blue-600 dark:text-blue-500 hover:underline">Remove</button>
+          <button class="record-remove font-medium text-blue-600 dark:text-blue-500 hover:underline print:hidden">Remove</button>
         </td>
       </tr>
     </template>

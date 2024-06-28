@@ -9,4 +9,7 @@ export const closeSidebarBtnHandler = ()=> {
     productSidebar.classList.add('translate-x-full')
 };
 
-
+export const checkoutBtnHandler = () => {
+    // console.log('u checkout.');
+    window.print();
+}
